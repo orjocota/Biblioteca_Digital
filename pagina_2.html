@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/index.css">
+    <title>PAGINA 2</title>
+
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="head_p">
+                <div class="logo">
+                    <img src="IMG/—Pngtree—cartoon illustration of hand drawn_5357149.png" alt="Logo">
+                </div>
+                <ul class="nav">
+                    <a href="index.html">
+                        <li class="li_nav">Inicio</li>
+                    </a>
+                    <a href="#">
+                        <li class="li_nav">Nosotros</li>
+                    </a>
+                    <a href="#">
+                        <li class="li_nav">Contactos</li>
+                    </a>
+                    <a href="index.html">
+                        <li class="li_nav">Salir</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!--------------------------------------------Seccion de Nombre del Usuario manejando DOM ---------------------------->
+
+    <section id="section_nombre">
+        <h1 id="section_h1"></h1>
+    </section>
+
+    <!--------------------------------------------Curpo de la pagina con las opciones a Elegir---------------------------->
+
+    <div id="cuerpo" class="container">
+
+        <div id="caja_btn" class="caja_btn">
+
+            <div class="caja_btn1">
+                <h2>Deseas Ingresar un Libro que ya has leido?</h2>
+                <div class="caja_img">
+                    <img src="IMG/Ingresar_Libro.jpg" alt="Ingresar-Libros">
+                </div>
+                <button class="btn1" id="btn_ingresar">Click Aqui</button>
+            </div>
+
+            <div class="caja_btn2">
+                <h2>Deseas Buscar Libros Nuevos para Leer o Comprar?</h2>
+                <div class="caja_img">
+                    <img src="IMG/Buscar_Libro.jpg" alt="Buscar-Libros">
+                </div>
+                <button class="btn2" id="btn_buscar_libro">Click Aqui</button>
+            </div>
+
+            <div class="caja_btn3">
+                <h2>Deseas Ver tu Lista de Libros Leidos?</h2>
+                <div class="caja_img">
+                    <img src="IMG/buscar_Libro_leidos.jpg" alt="Buscar-Libros-Leidos">
+                </div>
+                <button class="btn3" id="btn_ver_libro">Click Aqui</button>
+            </div>
+        </div>
+
+        <!-----------------------------Seccion Para Ingresar Libros y Guardarlos------------------------------------------------------>
+        <div class="container">
+
+            <div id="form2" class="form_p">
+                <div class="titulo_form" id="titulo_form">
+
+                </div>
+
+                <form id="form_2" class="form_2">
+                    <div>
+                        <label for="ing_titutlo">Titulo</label>
+                        <input type="text" name="titulo" id="ing_titulo">
+                    </div>
+                    <div>
+                        <label for="ing_autor">Autor</label>
+                        <input type="text" name="autor" id="ing_autor">
+                    </div>
+                    <div>
+                        <label for="ing_year">Año</label>
+                        <input type="number" name="year" id="ing_year">
+                    </div>
+                    <div>
+                        <label for="ing_genero">Genero o Categoria</label>
+                        <input type="text" name="genero" id="ing_genero">
+                    </div>
+                    <div>
+                        <label for="ing_descripcion">Comentarios sobre el Libro</label>
+                        <textarea name="descripcion" id="ing_descripcion" cols="20" rows="10"></textarea>
+                    </div>
+                    <button type="submit" id="registra_Libro">Registrar</button>
+                </form>
+            </div>
+            <div id="table-mostrar-libros" class="table-mostrar-libros_none">
+                <h2>LIBROS LEIDOS RECIENTEMENTE</h2>
+                <table class="table-libros" id="table-libros">
+                    
+                   <thead>
+                       <tr>
+                        <th>TITULO</th>
+                        <th>AUTOR</th>
+                        <th>AÑO</th>
+                        <th>GENERO</th>
+                        <th>COMENTARIOS</th>
+                       </tr>
+                   </thead>
+                   <tbody id="mostrarLibros" class="tbody">
+
+                   </tbody>
+                </table>
+                <a href="pagina_2.html"><button>Regresar</button></a>
+            </div>            
+        </div>
+        
+        <!-----------------------------SECCION PARA BUSCAR LIBROS NUEVOS DESDE UNA API------------------------------------------------------>
+    
+        <div class="buscar_libro_caja-none" id="buscar_libro_caja">           
+            <input id="in-buscar-libro" class="buscar-txt" type="search-text" placeholder="Nombre de Autor o del Libro">
+            <button type="button" class="buscar-buton" id="btn-buscar_libro">Buscar</button>
+            <a href="pagina_2.html"><button class="buscar-buton">Regresar</button></a>
+        </div>
+        <div class="cuerpo_libro" id="cuerpo_libro">
+
+        </div>
+        
+
+    </div>
+    </div>
+    
+
+
+
+
+
+    <script src="https://kit.fontawesome.com/11d95cc3a7.js" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="JS/pagina_2.js"></script>
+
+</body>
+
+</html>

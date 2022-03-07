@@ -1,0 +1,574 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+body{
+    background-image: url(../IMG/Fondo2.jpg);
+    font-family: 'Roboto', sans-serif;
+}
+.container{
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/*----------------------- PAGINA PRINCIPAL --------------*/
+.head_p{
+    width: 100%;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: whitesmoke;
+}
+.logo{
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;    
+}
+.logo > img{
+    width: 100%;
+    height: 100%;
+    border: 2px solid wheat;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.nav{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 28px;
+    cursor: pointer;
+}
+.nav > a > li{
+    color: whitesmoke;
+    text-align: center;
+}
+.nav > a > li:hover{
+    border-bottom: 2px solid whitesmoke  ;
+}
+.titulo_pr{
+    margin-top: 30px;
+    text-align: center;
+    font-size: 40px;
+    color:whitesmoke;
+    font-style: oblique;
+}
+.parrafo{
+    text-align: center;
+    font-size: 35px;
+    color: whitesmoke;
+    margin-top: 20px;
+    margin-top: 50px;
+}
+.parrafo > i{
+    font-size: 40px;
+    padding: 10px;
+    color: wheat;
+}
+.cuerpo_P{
+    max-width: 800px;
+	width: 90%;
+	margin: auto;
+	padding: 40px;
+    border: 5px solid ivory;
+    border-radius: 10px;
+}
+.form_principal {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+}
+
+.all_label {
+	display: block;
+	font-weight: 700;
+	padding: 10px;
+	cursor: pointer;
+    color: ivory;
+    font-size: 20px;
+}
+
+.caja_input {
+	position: relative;
+}
+
+.formulario__input {
+	width: 100%;
+	background: #fff;
+	border: 3px solid transparent;
+	border-radius: 3px;
+	height: 45px;
+	line-height: 45px;
+	padding: 0 40px 0 10px;
+	transition: .3s ease all;
+}
+
+.formulario__input:focus {
+	border: 3px solid #0075FF;
+	outline: none;
+	box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
+}
+
+.msg_error {
+	font-size: 12px;
+	margin-bottom: 0;
+	display: none;
+    color: wheat;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.formulario__input-error-activo {
+	display: block;
+}
+
+.formulario__validacion-estado {
+	position: absolute;
+	right: 10px;
+	bottom: 15px;
+	z-index: 100;
+	font-size: 16px;
+	opacity: 0;
+}
+
+.formulario__checkbox {
+	margin-right: 10px;
+}
+
+.formulario__grupo-terminos, 
+.formulario__mensaje,
+.formulario__grupo-btn-enviar {
+	grid-column: span 2;
+}
+
+.formulario__mensaje {
+	height: 45px;
+	line-height: 45px;
+	background: #F66060;
+	padding: 0 15px;
+	border-radius: 3px;
+	display: none;
+}
+
+.formulario__mensaje-activo {
+	display: block;
+}
+
+.formulario__mensaje p {
+	margin: 0;
+}
+
+.formulario__grupo-btn-enviar {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.formulario__btn {
+	height: 45px;
+	line-height: 45px;
+	width: 30%;
+	background: #000;
+	color: #fff;
+	font-weight: bold;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: .1s ease all;
+}
+
+.formulario__btn:hover {
+	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
+}
+
+.formulario__mensaje-exito {
+	font-size: 14px;
+	color: #119200;
+	display: none;
+}
+
+.msg_enviar_error {
+	display: block;
+}
+
+/* ----- -----  Estilos para Validacion ----- ----- */
+.formulario__grupo-correcto{
+    color: #1ed12d;
+	opacity: 1;
+
+}
+.formulario__grupo-correcto .formulario__validacion-estado {
+	color: #1ed12d;
+	opacity: 1;
+}
+
+.formulario__grupo-incorrecto{
+	color: #bb2929;
+}
+.formulario__grupo-incorrecto .formulario__label {
+	color: #bb2929;
+}
+
+.formulario__grupo-incorrecto .formulario__validacion-estado {
+	color: #bb2929;
+	opacity: 1;
+}
+
+.formulario__grupo-incorrecto .formulario__input {
+	border: 3px solid #bb2929;
+}
+
+
+/* ----- -----  Mediaqueries ----- -----
+@media screen and (max-width: 800px) {
+	.formulario {
+		grid-template-columns: 1fr;
+	}
+
+	.formulario__grupo-terminos, 
+	.formulario__mensaje,
+	.formulario__grupo-btn-enviar {
+		grid-column: 1;
+	}
+
+	.formulario__btn {
+		width: 100%;
+	}
+} */
+
+/*------------------------PAGINA REGISTRO DE PASSWORD---------------------------*/
+section{
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.caja_pasw{
+    width: 30%;
+    height: 300px;
+    border: 3px solid ivory;
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10%;
+}
+.caja_registro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    color: ivory;
+}
+.user_login{
+    width: 80%;
+    height: 20%;
+    font-size: 27px;
+    color: wheat;
+    text-align: center;
+    text-transform: uppercase;
+}
+.caja_registro > input{
+    width: 80%;
+    height: 12%;
+    margin-top: 10px;
+    border:none;
+    border-radius: 15px;
+    padding: 5px;
+
+}
+.boton_2{
+    width: 50%;
+    margin: 20px 0px 15px 0px;
+    font-size: 17px;
+    padding: 5px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* ----------------PAGINA #2--------------------------------------*/
+.caja_btn{
+    width: 90%;
+    height: auto;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    margin: 30px auto auto auto;
+    padding: 20px;
+
+    border: 6px dashed wheat; 
+}
+.caja_btn3{
+    grid-column: 1/3;
+    width: 70%;
+    margin: 50px auto auto auto;
+}
+.caja_btn1,
+.caja_btn2,
+.caja_btn3{
+    width: 90%;
+    height: auto;
+    text-align: center;
+}
+
+.btn1,
+.btn2,
+.btn3{
+    width: 180px;
+    background-color: rgb(184, 180, 180);
+    color: white;
+    font-size: 25px;
+    border: 4px solid white;
+    cursor: pointer; 
+    padding: 15px;
+    border-radius: 8px; 
+    margin-top: 20px;
+    
+}
+
+.caja_btn1 h2,
+.caja_btn2 h2,
+.caja_btn3 h2{
+    font-size: 30px;
+    color: wheat;
+    padding: 20px 0 30px 0;
+}
+
+.section_1{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 35px;
+    color: wheat;
+}
+.section_1 > span{
+    font-size: 38px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+.caja_img,
+.caja_img{
+    width: 250px;
+    height: 250px;
+    text-align: center;
+    margin: auto;
+    border: 2px solid wheat;
+    border-radius: 15px;   
+}
+img{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+/*--------------------------------PAGINA 2 INGRESAR LIBROS-----------------------------*/
+.nDeIngreso{
+    display: flex;
+    background-color: wheat;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    width: 60%;
+    margin: 20px auto 20px auto;
+    padding: 20px;
+    border: 3px solid black;
+    border-radius: 10px;
+}
+.dNone{
+    display: none;
+}
+.nDeIngreso label{
+    font-size: 28px;
+}
+.nDeIngreso input{
+    width: 20%;
+    height: 40px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+    padding-left: 10px;
+    font-size: 20px;
+}
+.nDeIngreso button{
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 2px solid white;
+    background-color: grey;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+/*------------------------------PAGINA 2 FORMULARIO--------------------------------------*/
+.form_p{
+    display: none;
+}
+.form2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+    border: 3px solid black;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(241, 221, 183);  
+
+}
+
+.titulo_form{
+    width: 75%;
+    margin: 15px;
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+.form2 input, textarea{
+    display: block;
+    padding: 5px;
+    width: 500px;
+    margin: 10px 0px 10px 0px;
+    border-radius: 10px;
+    border: 2px solid black;
+    font-size: 18px;
+    font-weight: 700;
+}
+.form2 label{
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
+    justify-content: start;
+}
+.form2 button{
+    font-size: 20px;
+    padding: 10px 15px 10px 15px;
+    border-radius: 10px;
+    border: 2px solid white;
+    color: white;
+    background-color: grey;
+    font-weight: 700;
+    width: 500px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    
+}
+
+/*----------------------------------SECCCION DE MOSTRAR LOS LIBROS INGRESADOS-----------------------------------------*/
+.table-mostrar-libros_none{
+    display: none;
+}
+.table-mostrar-libros{
+    width: 100%;
+    font-weight: 700;
+    height: auto;
+    padding: 15px;
+    background-color: rgb(53, 49, 49);
+    border-radius: 10px;
+    color: rgb(6, 133, 184);
+    border: 4px solid black;
+    margin-top: 50px;
+}
+.table-mostrar-libros h2{
+    width: 60%;
+    margin: 50px auto;
+    text-align: center;
+    padding: 15px 5px;
+    font-size: 35px;
+}
+
+.table-libros{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border-collapse: collapse;
+    text-align: center;
+    
+}
+
+thead th{
+    border-bottom: 2px solid black;
+    padding: 10px 20px;
+    font-size: 20px;
+}
+.tbody td{
+    padding: 15px 20px;
+    font-size: 18px;
+}
+.table-mostrar-libros button{
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: rgb(10, 10, 10);
+    color: rgb(6, 133, 184);
+    border: 2px solid rgb(6, 133, 184);
+    border-radius: 10px;
+    margin-top: 50px;
+    cursor: pointer;
+}
+
+/*--------------------------------------------------------SECCION PARA BUSCAR LIBROS NUEVOS DESDE UNA API--------------------------------------------*/
+.buscar_libro_caja-none{
+    display: none;
+}
+.buscar_libro_caja{
+    width: 100%;
+    font-weight: 700;
+    height: 80px;
+    padding: 15px;
+    background-color: rgb(53, 49, 49);
+    border-radius: 30px;
+    color: rgb(6, 133, 184);
+    border: 4px solid black;
+    margin-top: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buscar-txt{
+    background-color: rgb(82, 76, 76);
+    width: 50%;
+    height: 40px;
+    border: 3px solid rgb(6, 133, 184);
+    border-radius: 40px;
+    padding-left: 15px;
+    font-size: 20px;
+    outline: none;
+    color: whitesmoke;   
+    transition: 0.4s; 
+}
+.buscar-buton{
+    font-size: 18px;
+    padding: 8px 20px;
+    background-color: rgb(10, 10, 10);
+    color: rgb(6, 133, 184);
+    border: 2px solid rgb(6, 133, 184);
+    border-radius: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.img_libro{
+    width: 200px;
+    height: 200px;
+}
+
+
+
+
+
+
+
+
+
