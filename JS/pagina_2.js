@@ -73,7 +73,7 @@ function saveStorageLibros() {
   dataSaveLibros = JSON.stringify(Books);
   localStorage.setItem("listaDeLibros", dataSaveLibros);
 }
-
+// no entra en funcionamiento esta parte del FETCH por que para que funciones debo siempre acivar el JSON-SERVER
 function librosPost() {
   fetch('http://127.0.0.1:5500/DataLibros', {
     method: "POST",
