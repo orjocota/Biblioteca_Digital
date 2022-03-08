@@ -75,7 +75,7 @@ function saveStorageLibros() {
 }
 
 function librosPost() {
-  fetch('http://127.0.0.1:5500/JSON/librosLeidos-json', {
+  fetch('http://127.0.0.1:5500/DataLibros', {
     method: "POST",
     body: JSON.stringify(Books),
     headers: {
