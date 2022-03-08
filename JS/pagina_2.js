@@ -45,6 +45,7 @@ class CrearLibrosNuevo {
 }
 
 let Books = [];
+
 function tomaDeLibros() {
   let titulo = document.getElementById("ing_titulo").value,
     autor = document.getElementById("ing_autor").value,
@@ -74,7 +75,7 @@ function saveStorageLibros() {
 }
 
 function librosPost() {
-  fetch("http://localhost:3000/DataLibros", {
+  fetch('http://127.0.0.1:5500/JSON/librosLeidos-json', {
     method: "POST",
     body: JSON.stringify(Books),
     headers: {
@@ -86,6 +87,16 @@ function librosPost() {
     .catch((error) => console.log(error));
 }
 
+function mensajeDespuesPost() { 
+  Swal.fire({
+    icon: "success",
+    title: "Genial!!",
+    text: "Acabas de Registar tu libro en tu Biblioteca.",
+    showConfirmButton: false,
+    footer:
+      '<a href="pagina_2.html">!!!Click Aqui para Continuar!!!</a>',
+  });
+}
 let form = document.getElementById("form_2");
 
 form.addEventListener("submit", (e) => {
@@ -93,6 +104,7 @@ form.addEventListener("submit", (e) => {
   tomaDeLibros();
   librosPost();
   saveStorageLibros();
+  mensajeDespuesPost()
   form.reset();
 });
 
@@ -124,6 +136,7 @@ function mostrarLibros() {
   http.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       let datos = JSON.parse(this.responseText).DataLibros;
+      console.log(datos);
       let mostrarLibros = document.getElementById("mostrarLibros");
       mostrarLibros.innerHTML = "";
       for (const item of datos) {
@@ -156,33 +169,38 @@ document.getElementById("btn_buscar_libro").addEventListener("click", function (
 
 document.getElementById("btn-buscar_libro").addEventListener("click", function () {
     let dataBuscar = document.getElementById("in-buscar-libro").value;
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=${dataBuscar}`)
+    let respuesta = document.getElementById("respuesta");
+    respuesta.setAttribute("class", "respuesta");
+    let url="",
+        img="",
+        titulo="",
+        autor="",
+        tarjeta=""
+
+      fetch(`https://www.googleapis.com/books/v1/volumes?q=${dataBuscar}`)
       .then((handleResponse) => handleResponse.json())
       .then((libros) =>{
-       for (const i of libros.items) {
-        let lpapa = document.getElementById("cuerpo_libro");
-        let lhijo = document.createElement("img");
-        lhijo.setAttribute("class","img_libro")
-        lhijo.src += `${i.volumeInfo.imageLinks}`
-        lpapa.appendChild(lhijo);        
+        console.log(libros)
+       for (let i = 0; i < libros.items.length; i++) {
+         titulo = libros.items[i].volumeInfo.title;
+         autor  = libros.items[i].volumeInfo.authors;
+         url    = libros.items[i].volumeInfo.infoLink;
+         img    = libros.items[i].volumeInfo.imageLinks.thumbnail;
+         tarjeta= ` <div class="card-respuetsa">
+                    <h3 class="titulo-Libro">Titulo: </br> ${titulo}</h3>               
+                    <div class="caja-img-respuesta">
+                    <img src="${img}" alt="Libro de ${autor}">
+                    </div>
+                    <h4 class="titulo-autor">Autor: ${autor}</h4>
+                    <a href="${url}" target="blank"><button class="boton-libros-bus">Ver mas Info</button></a>
+                    </div>`         
+         document.getElementById("respuesta").innerHTML += tarjeta;
+
        }
-      //  i.volumeInfo.imageLinks.thumbnail
                  
-        });
-
-
-
-
-
-
-
       });
+     
+});
 
 
 
-        // for (const i of libros.items) {
-        //   for (const j of i) {
-
-        //     console.log(libros)            
-        //   }
-        // }

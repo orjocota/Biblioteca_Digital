@@ -564,6 +564,67 @@ thead th{
     height: 200px;
 }
 
+/*----------------------------------CUERPO DE LA BUSQUEDA DE LIBROS----------------------------------------------*/
+
+.respuesta{
+    width: 100%;
+    height: auto;
+    border: 4px solid black;
+    background-color: rgb(53, 49, 49);
+    margin-top: 10px;
+    border-radius: 20px;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.card-respuetsa{
+    padding: 15px;
+    text-align: center;
+    border: 1px solid rgb(6, 133, 184);
+    border-radius: 20px;
+    background-color: rgb(71, 67, 67);
+    width: 350px;
+    height: auto;
+    margin: 8px;
+}
+.titulo-Libro{
+    font-size: 25px;
+    padding: 15px 0px;
+    color: whitesmoke;
+    margin-bottom: 20px auto;
+    width: 90%;
+    text-align: center;
+}
+.titulo-autor{
+    font-size: 20px;
+    padding: 15px 0px;
+    color: whitesmoke;
+    margin: 20px auto;
+    width: 75%;
+    text-align: center;
+
+}
+.boton-libros-bus{
+    font-size: 18px;
+    padding: 8px 20px;
+    background-color: rgb(10, 10, 10);
+    color: rgb(6, 133, 184);
+    border: 2px solid rgb(6, 133, 184);
+    border-radius: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+
+}
+
+.caja-img-respuesta{
+    width: 150px;
+    height: 150px;
+    margin: auto;
+}
+.caja-img-respuesta img{
+    width: 100%;
+    height: 100%;
+}
 
 
 

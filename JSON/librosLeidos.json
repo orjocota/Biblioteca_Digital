@@ -1,5 +1,24 @@
 {
   "DataLibros": [
-
+    [
+      {
+        "id": 77,
+        "titulo": "Blancanieves",
+        "autor": "Orlando Contreras",
+        "year": "1984",
+        "genero": "Novela",
+        "descripcion": "Muy buena"
+      }
+    ],
+    [
+      {
+        "id": 10,
+        "titulo": "Blancanieves",
+        "autor": "Orlando Contreras",
+        "year": "1984",
+        "genero": "Novela",
+        "descripcion": "Muy buena"
+      }
+    ]
   ]
 }
