@@ -126,7 +126,7 @@ window.onload = () => {
     let infoLocalS = JSON.parse(localStorage.getItem("listaDeDatos")) || [];
     infoLocalS.push(lisDato);
     let dataSave = JSON.stringify(infoLocalS);
-    localStorage.setItem("listaDeLibros", dataSave);
+    localStorage.setItem("listaDeDatos", dataSave);
    }
 
   function mensaje() {
