@@ -8,7 +8,7 @@ function imprimirData() {
   let cuerpo = document.getElementById("section_nombre");
   for (const item of list) {
     let contenedor = document.getElementById("section_h1");
-    contenedor.innerHTML = `Hola, <span>${item.nombre}</span> Bienvenido.`;
+    contenedor.innerHTML = `Hola, <span>${item[0].nombre}</span> Bienvenido.`;
     contenedor.setAttribute("class", "section_1");
     cuerpo.appendChild(contenedor);
   }
