@@ -11,8 +11,8 @@ function validarPassword() {
 
     for (const item of list) {
       if (
-        `${item.correo}` == document.getElementById("confirm_email").value &&
-        `${item.password}` == document.getElementById("confirm_password").value
+        `${item[0].correo}` == document.getElementById("confirm_email").value &&
+        `${item[0].password}` == document.getElementById("confirm_password").value
       ) {
         Swal.fire({
           icon: "success",
