@@ -99,7 +99,7 @@
                     </div>
                     <div>
                         <label for="ing_fecha">Fecha en que terminaste el Libro</label>
-                        <input type="date" name="fecha" id="ing_fecha" ></input>
+                        <input type="date" name="fecha" id="ing_fecha"></input>
                     </div>
                     <div>
                         <label for="ing_descripcion">Comentarios sobre el Libro</label>
@@ -108,31 +108,36 @@
                     <button type="submit" id="registra_Libro">Registrar</button>
                 </form>
             </div>
+
+
+            <!----------------SECCION DE LA TABLA PARA VER LOS LIBROS REGISTRADOS POR EL USUARIO----------------->
+
+
             <div id="table-mostrar-libros" class="table-mostrar-libros_none">
                 <h2>LIBROS LEIDOS RECIENTEMENTE</h2>
                 <table class="table-libros" id="table-libros">
-                    
-                   <thead>
-                       <tr>
-                        <th>TITULO</th>
-                        <th>AUTOR</th>
-                        <th>AÑO</th>
-                        <th>GENERO</th>
-                        <th>COMENTARIOS</th>
-                        <th>FECHA</th>
-                       </tr>
-                   </thead>
-                   <tbody id="mostrarLibros" class="tbody">
 
-                   </tbody>
+                    <thead>
+                        <tr>
+                            <th>TITULO</th>
+                            <th>AUTOR</th>
+                            <th>AÑO</th>
+                            <th>GENERO</th>
+                            <th>COMENTARIOS</th>
+                            <th>FECHA</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mostrarLibros" class="tbody">
+
+                    </tbody>
                 </table>
                 <a href="pagina_2.html"><button>Regresar</button></a>
-            </div>            
+            </div>
         </div>
-        
+
         <!-----------------------------SECCION PARA BUSCAR LIBROS NUEVOS DESDE UNA API------------------------------------------------------>
-    
-        <div class="buscar_libro_caja-none" id="buscar_libro_caja">           
+
+        <div class="buscar_libro_caja-none" id="buscar_libro_caja">
             <input id="in-buscar-libro" class="buscar-txt" type="search-text" placeholder="Nombre de Autor o del Libro">
             <button type="button" class="buscar-buton" id="btn-buscar_libro">Buscar</button>
             <a href="pagina_2.html"><button class="buscar-buton">Regresar</button></a>
@@ -141,10 +146,9 @@
 
         </div>
         
+    </div>
+    </div>
 
-    </div>
-    </div>
-    
 
 
 

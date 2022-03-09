@@ -52,7 +52,7 @@ function tomaDeLibros() {
     year = document.getElementById("ing_year").value,
     genero = document.getElementById("ing_genero").value,
     descripcion = document.getElementById("ing_descripcion").value,
-    fecha = document.getElementById("ing_fecha").value
+    fecha = document.getElementById("ing_fecha").value;
 
   if (
     titulo != "" &&
@@ -69,15 +69,14 @@ function tomaDeLibros() {
   );
 }
 
-
 function saveStorageLibros() {
   let datoLocaS = JSON.parse(localStorage.getItem("listaDeLibros")) || [];
   datoLocaS.push(Books);
-  let dataSaveLibros = JSON.stringify(datoLocaS); 
+  let dataSaveLibros = JSON.stringify(datoLocaS);
   localStorage.setItem("listaDeLibros", dataSaveLibros);
 }
 
-function mensajeDespuesPost() { 
+function mensajeDespuesPost() {
   Swal.fire({
     icon: "success",
     title: "Genial!!",
@@ -93,7 +92,7 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   tomaDeLibros();
   saveStorageLibros();
-  mensajeDespuesPost()
+  mensajeDespuesPost();
   form.reset();
 });
 
@@ -117,12 +116,12 @@ function mostraTabla() {
 }
 
 function mostrarLibros() {
-  let librosLocalS = JSON.parse(localStorage.getItem("listaDeLibros"))
-      console.log(librosLocalS);
-      let mostrarLibros = document.getElementById("mostrarLibros");
-      mostrarLibros.innerHTML = "";
-      for (const item of librosLocalS) {
-        mostrarLibros.innerHTML += ` 
+  let librosLocalS = JSON.parse(localStorage.getItem("listaDeLibros"));
+  console.log(librosLocalS);
+  let mostrarLibros = document.getElementById("mostrarLibros");
+  mostrarLibros.innerHTML = "";
+  for (const item of librosLocalS) {
+    mostrarLibros.innerHTML += ` 
         <tr>
           <td>${item[0].titulo}</td>
           <td>${item[0].autor}</td>
@@ -131,13 +130,14 @@ function mostrarLibros() {
           <td>${item[0].descripcion}</td>
           <td>${item[0].fecha}</td>
         </tr> `;
-      }
-  
-  };
+  }
+}
 
 //-----------------------SECCION PARA BUSCAR LIBROS NUEVOS DESDE UNA API------------------------------>
 
-document.getElementById("btn_buscar_libro").addEventListener("click", function (){
+document
+  .getElementById("btn_buscar_libro")
+  .addEventListener("click", function () {
     let padre = document.getElementById("cuerpo");
     let hijo = document.getElementById("caja_btn");
     padre.removeChild(hijo);
@@ -149,42 +149,37 @@ document.getElementById("btn_buscar_libro").addEventListener("click", function (
       .classList.add("buscar_libro_caja");
   });
 
-document.getElementById("btn-buscar_libro").addEventListener("click", function () {
+document
+  .getElementById("btn-buscar_libro")
+  .addEventListener("click", function () {
     let dataBuscar = document.getElementById("in-buscar-libro").value;
     let respuesta = document.getElementById("respuesta");
     respuesta.setAttribute("class", "respuesta");
-    let url="",
-        img="",
-        titulo="",
-        autor="",
-        tarjeta=""
+    let url = "",
+      img = "",
+      titulo = "",
+      autor = "",
+      tarjeta = "";
 
-      fetch(`https://www.googleapis.com/books/v1/volumes?q=${dataBuscar}`)
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${dataBuscar}`)
       .then((handleResponse) => handleResponse.json())
-      .then((libros) =>{
-       
-       respuesta.innerHTML = ""; 
-       for (let i = 0; i < libros.items.length; i++) {
-         titulo = libros.items[i].volumeInfo.title;
-         autor  = libros.items[i].volumeInfo.authors;
-         url    = libros.items[i].volumeInfo.infoLink;
-         img    = libros.items[i].volumeInfo.imageLinks.thumbnail;
-         tarjeta= ` <div class="card-respuetsa">
+      .then((libros) => {
+        respuesta.innerHTML = "";
+        for (let i = 0; i < libros.items.length; i++) {
+          titulo = libros.items[i].volumeInfo.title;
+          autor = libros.items[i].volumeInfo.authors;
+          url = libros.items[i].volumeInfo.infoLink;
+          img = libros.items[i].volumeInfo.imageLinks.thumbnail;
+          tarjeta = ` <div class="card-respuetsa">
                     <h3 class="titulo-Libro">Titulo: </br> ${titulo}</h3>               
                     <div class="caja-img-respuesta">
                     <img src="${img}" alt="Libro de ${autor}">
                     </div>
                     <h4 class="titulo-autor">Autor: ${autor}</h4>
                     <a href="${url}" target="blank"><button class="boton-libros-bus">Ver mas Info</button></a>
-                    </div>`
-                                      
-                    respuesta.innerHTML += tarjeta;
+                    </div>`;
 
-       }
-                 
+          respuesta.innerHTML += tarjeta;
+        }
       });
-     
-});
-
-
-
+  });

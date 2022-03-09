@@ -2,6 +2,9 @@ window.onload = () => {
   const formulario = document.getElementById("form_principal");
   const inputs = document.querySelectorAll("#form_principal input");
 
+
+  //Se creal Expresiones para la autenticacion de los campos del formulario principal
+
   const expresiones = {
     usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
@@ -17,6 +20,8 @@ window.onload = () => {
     correo: false,
     telefono: false,
   };
+
+  // Seccion de Validacion del Formulario.
 
   const validarFormulario = (e) => {
     switch (e.target.name) {
@@ -81,10 +86,14 @@ window.onload = () => {
     }
   };
 
+
   inputs.forEach((input) => {
     input.addEventListener("keyup", validarFormulario);
     input.addEventListener("blur", validarFormulario);
   });
+
+
+  // Seccion donde se crear el Objeto para almacenar la informacion del formulario
 
   let lisDato = [];
 
@@ -99,6 +108,11 @@ window.onload = () => {
 
     lisDato.push(newData);
   }
+
+
+  //Seccion de toda de datos y almacenamiento en el localStorage
+
+
   function saveData() {
     let usu = document.getElementById("usuario").value,
       nom = document.getElementById("nombre").value,
@@ -109,9 +123,12 @@ window.onload = () => {
     addListDatos(usu, nom, pas, cor, tel);
   }
   function saveStorage() {
-    let dataSave = JSON.stringify(lisDato);
-    localStorage.setItem("listaDeDatos", dataSave);
-  }
+    let infoLocalS = JSON.parse(localStorage.getItem("listaDeDatos")) || [];
+    infoLocalS.push(lisDato);
+    let dataSave = JSON.stringify(infoLocalS);
+    localStorage.setItem("listaDeLibros", dataSave);
+   }
+
   function mensaje() {
     Swal.fire({
       icon: "success",
@@ -122,6 +139,11 @@ window.onload = () => {
         '<a href="registro_password.html">!!!Click Aqui para Continuar!!!</a>',
     });
   }
+
+
+
+  //BOTON ENVIAR FORMULARIO para ser guardado en el localStorage y Pasar al LOGIN
+  
   formulario.addEventListener("submit", (e) => {
     e.preventDefault();
 

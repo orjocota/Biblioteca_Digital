@@ -6,11 +6,11 @@ inciarLogin.addEventListener("submit", function (e) {
 });
 
 function validarPassword() {
-  if(localStorage.getItem("listaDeDatos")){
+  if (localStorage.getItem("listaDeDatos")) {
     let list = JSON.parse(localStorage.getItem("listaDeDatos"));
-  
+
     for (const item of list) {
-    if (
+      if (
         `${item.correo}` == document.getElementById("confirm_email").value &&
         `${item.password}` == document.getElementById("confirm_password").value
       ) {
@@ -31,5 +31,4 @@ function validarPassword() {
       }
     }
   }
-
 }
