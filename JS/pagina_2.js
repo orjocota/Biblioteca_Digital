@@ -31,11 +31,11 @@ botonIngresar.addEventListener("click", function () {
   document.getElementById("form2").classList.add("form2");
 });
 
-/* SECCION INGRESAR LIBROS AL JSON*/
+/* SECCION INGRESAR LIBROS AL LOCALSTORAGE*/
 
 class CrearLibrosNuevo {
-  constructor(id, titulo, autor, year, genero, descripcion) {
-    this.id = id;
+  constructor(fecha, titulo, autor, year, genero, descripcion) {
+    this.fecha = fecha;
     this.titulo = titulo;
     this.autor = autor;
     this.year = year;
@@ -52,7 +52,7 @@ function tomaDeLibros() {
     year = document.getElementById("ing_year").value,
     genero = document.getElementById("ing_genero").value,
     descripcion = document.getElementById("ing_descripcion").value,
-    id = Math.floor(Math.random() * 100);
+    fecha = document.getElementById("ing_fecha").value
 
   if (
     titulo != "" &&
@@ -61,30 +61,20 @@ function tomaDeLibros() {
     year.length == 4 &&
     genero != "" &&
     descripcion != "" &&
-    id != ""
+    fecha != ""
   );
 
   Books.push(
-    new CrearLibrosNuevo(id, titulo, autor, year, genero, descripcion)
+    new CrearLibrosNuevo(fecha, titulo, autor, year, genero, descripcion)
   );
 }
-let dataSaveLibros;
+
+
 function saveStorageLibros() {
-  dataSaveLibros = JSON.stringify(Books);
+  let datoLocaS = JSON.parse(localStorage.getItem("listaDeLibros")) || [];
+  datoLocaS.push(Books);
+  let dataSaveLibros = JSON.stringify(datoLocaS); 
   localStorage.setItem("listaDeLibros", dataSaveLibros);
-}
-// no entra en funcionamiento esta parte del FETCH por que para que funciones debo siempre acivar el JSON-SERVER
-function librosPost() {
-  fetch('http://127.0.0.1:5500/DataLibros', {
-    method: "POST",
-    body: JSON.stringify(Books),
-    headers: {
-      "Content-Type": "application/json; charset=utf-8",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch((error) => console.log(error));
 }
 
 function mensajeDespuesPost() { 
@@ -94,7 +84,7 @@ function mensajeDespuesPost() {
     text: "Acabas de Registar tu libro en tu Biblioteca.",
     showConfirmButton: false,
     footer:
-      '<a href="pagina_2.html">!!!Click Aqui para Continuar!!!</a>',
+      '<a href="pagina_2.html"><h2 style="color:grey">!!!Click Aqui para Regresar!!!</h2></a>',
   });
 }
 let form = document.getElementById("form_2");
@@ -102,7 +92,6 @@ let form = document.getElementById("form_2");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   tomaDeLibros();
-  librosPost();
   saveStorageLibros();
   mensajeDespuesPost()
   form.reset();
@@ -128,18 +117,11 @@ function mostraTabla() {
 }
 
 function mostrarLibros() {
-  const http = new XMLHttpRequest();
-
-  http.open("GET", "../JSON/librosLeidos.json", true);
-  http.send();
-
-  http.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      let datos = JSON.parse(this.responseText).DataLibros;
-      console.log(datos);
+  let librosLocalS = JSON.parse(localStorage.getItem("listaDeLibros"))
+      console.log(librosLocalS);
       let mostrarLibros = document.getElementById("mostrarLibros");
       mostrarLibros.innerHTML = "";
-      for (const item of datos) {
+      for (const item of librosLocalS) {
         mostrarLibros.innerHTML += ` 
         <tr>
           <td>${item[0].titulo}</td>
@@ -147,11 +129,11 @@ function mostrarLibros() {
           <td>${item[0].year}</td>
           <td>${item[0].genero}</td>
           <td>${item[0].descripcion}</td>
+          <td>${item[0].fecha}</td>
         </tr> `;
       }
-    }
+  
   };
-}
 
 //-----------------------SECCION PARA BUSCAR LIBROS NUEVOS DESDE UNA API------------------------------>
 
@@ -180,7 +162,8 @@ document.getElementById("btn-buscar_libro").addEventListener("click", function (
       fetch(`https://www.googleapis.com/books/v1/volumes?q=${dataBuscar}`)
       .then((handleResponse) => handleResponse.json())
       .then((libros) =>{
-        console.log(libros)
+       
+       respuesta.innerHTML = ""; 
        for (let i = 0; i < libros.items.length; i++) {
          titulo = libros.items[i].volumeInfo.title;
          autor  = libros.items[i].volumeInfo.authors;
@@ -193,8 +176,9 @@ document.getElementById("btn-buscar_libro").addEventListener("click", function (
                     </div>
                     <h4 class="titulo-autor">Autor: ${autor}</h4>
                     <a href="${url}" target="blank"><button class="boton-libros-bus">Ver mas Info</button></a>
-                    </div>`         
-         document.getElementById("respuesta").innerHTML += tarjeta;
+                    </div>`
+                                      
+                    respuesta.innerHTML += tarjeta;
 
        }
                  
